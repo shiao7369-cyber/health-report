@@ -809,19 +809,41 @@ function PrintPreviewModal({
         iDoc.open();
         iDoc.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><style>
           @page{size:A5 landscape;margin:0;}
-          *{box-sizing:border-box;print-color-adjust:exact;-webkit-print-color-adjust:exact;}
-          body{margin:0;padding:12px;background:#888;}
-          .docx-wrapper{margin:0 auto 16px !important;box-shadow:0 2px 10px rgba(0,0,0,0.35);display:block !important;}
-          .docx-wrapper:last-child{margin-bottom:0 !important;}
+          *{box-sizing:border-box;}
+          body{margin:0;padding:0;background:white;}
+          .docx-wrapper{display:block !important;}
           .docx-wrapper section.docx{margin:0 auto !important;}
+          /* 隱藏 Word 強制保留的尾端空段落，防止撐出第 2 頁 */
+          .docx-wrapper section.docx > p:last-child{display:none !important;}
+          /* 螢幕預覽加視覺效果，不影響列印 */
+          @media screen{
+            body{padding:12px;background:#e8ecf0;}
+            .docx-wrapper{margin:0 auto 16px !important;box-shadow:0 2px 12px rgba(0,0,0,0.3);}
+            .docx-wrapper:last-child{margin-bottom:0 !important;}
+          }
           @media print{
-            body{background:none;padding:0;margin:0;}
+            *{print-color-adjust:exact;-webkit-print-color-adjust:exact;
+              box-shadow:none !important;}
+            html,body{background:white !important;padding:0 !important;margin:0 !important;}
             .docx-wrapper{
-              box-shadow:none;margin:0 !important;
+              background:white !important;
+              margin:0 !important;padding:0 !important;
+              width:210mm !important;height:148mm !important;
+              display:flex !important;
+              align-items:center !important;
+              justify-content:center !important;
+              overflow:hidden !important;
               page-break-after:always;page-break-inside:avoid;
             }
             .docx-wrapper:last-child{page-break-after:auto;}
-            .docx-wrapper section.docx{page-break-inside:avoid !important;}
+            .docx-wrapper section.docx{
+              background:white !important;
+              margin:auto !important;
+              padding:0 !important;
+              box-shadow:none !important;
+              border:none !important;
+              page-break-inside:avoid !important;
+            }
           }
         </style></head><body></body></html>`);
         iDoc.close();
@@ -834,7 +856,7 @@ function PrintPreviewModal({
           await renderAsync(arrayBuf, container, undefined, {
             inWrapper: true,
             ignoreWidth: false,
-            ignoreHeight: false,
+            ignoreHeight: true,
           });
         }
         setLoaded(true);
@@ -869,7 +891,7 @@ function PrintPreviewModal({
         {error ?? `共 ${records.length} 頁 · 每頁一份報告 · A5 橫向`}
       </div>
       <div style={{ flex: 1, overflow: "auto", padding: "16px", background: "#1E293B" }}>
-        <iframe ref={iframeRef} style={{ width: "100%", minHeight: `${records.length * 165}mm`, border: "none", display: "block", background: "#888" }} title="列印預覽" />
+        <iframe ref={iframeRef} style={{ width: "100%", minHeight: `${records.length * 165}mm`, border: "none", display: "block", background: "#fff" }} title="列印預覽" />
       </div>
     </div>
   );
