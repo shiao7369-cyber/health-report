@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(where npm:*)",
+      "Bash(cmd /c \"where node & where npm & where npx\")",
+      "Bash(cmd /c \"powershell -Command \"\"Invoke-WebRequest -Uri ''https://nodejs.org/dist/v22.14.0/node-v22.14.0-x64.msi'' -OutFile ''$env:TEMP\\\\node-installer.msi''\"\"\")",
+      "Bash(cmd /c \"dir %TEMP%\\\\node-installer.msi\")",
+      "Bash(cmd /c \"powershell -Command \"\"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri ''https://nodejs.org/dist/v22.14.0/node-v22.14.0-x64.msi'' -OutFile ''C:\\\\Users\\\\update\\\\AppData\\\\Local\\\\Temp\\\\node-installer.msi'' -Verbose\"\"\")",
+      "Bash(cmd /c \"powershell -Command \"\"Test-Path ''C:\\\\Users\\\\update\\\\AppData\\\\Local\\\\Temp\\\\node-installer.msi''\"\"\")",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"Write-Host ''PowerShell works''\")",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Write-Host ''Downloading Node.js...''; Invoke-WebRequest -Uri ''https://nodejs.org/dist/v22.14.0/node-v22.14.0-x64.msi'' -OutFile ''C:\\\\Users\\\\update\\\\AppData\\\\Local\\\\Temp\\\\node-installer.msi''; Write-Host ''Done''\")",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"Get-Item ''C:\\\\Users\\\\update\\\\AppData\\\\Local\\\\Temp\\\\node-installer.msi'' | Select-Object Name, Length\")",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"Start-Process msiexec.exe -ArgumentList ''/i'', ''C:\\\\Users\\\\update\\\\AppData\\\\Local\\\\Temp\\\\node-installer.msi'', ''/qn'', ''/norestart'', ''ADDLOCAL=ALL'' -Wait -Verb RunAs; Write-Host ''Install complete''\")",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"& ''C:\\\\Program Files\\\\nodejs\\\\node.exe'' --version; & ''C:\\\\Program Files\\\\nodejs\\\\npm.cmd'' --version\")",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"cd ''C:\\\\Users\\\\update\\\\Desktop\\\\health report''; & ''C:\\\\Program Files\\\\nodejs\\\\npm.cmd'' install 2>&1\")",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command '$env:PATH = \"\"C:\\\\Program Files\\\\nodejs;\"\" + $env:PATH; Set-Location \"\"C:\\\\Users\\\\update\\\\Desktop\\\\health report\"\"; npm install 2>&1')",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command ':*)",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command '$env:PATH = \"\"C:\\\\Program Files\\\\nodejs;\"\" + $env:PATH; Set-Location \"\"C:\\\\Users\\\\update\\\\Desktop\\\\health report\"\"; npx astro check 2>&1')",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command '$env:PATH = \"\"C:\\\\Program Files\\\\nodejs;\"\" + $env:PATH; Set-Location \"\"C:\\\\Users\\\\update\\\\Desktop\\\\health report\"\"; npx tsc --noEmit 2>&1')",
+      "Bash(cmd /c \"where git & where gh\")",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"Get-Command git -ErrorAction SilentlyContinue | Select-Object Source; Get-Command gh -ErrorAction SilentlyContinue | Select-Object Source\")",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"Get-Command vercel -ErrorAction SilentlyContinue | Select-Object Source\")",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"& ''C:\\\\Program Files\\\\Git\\\\mingw64\\\\bin\\\\git.exe'' config --global user.name; & ''C:\\\\Program Files\\\\Git\\\\mingw64\\\\bin\\\\git.exe'' config --global user.email\")"
+    ]
+  }
+}
