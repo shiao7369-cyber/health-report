@@ -809,7 +809,7 @@ function PrintPreviewModal({
         iDoc.open();
         iDoc.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><style>
           @page{size:A5 landscape;margin:0;}
-          *{box-sizing:border-box;}
+          *{box-sizing:border-box;print-color-adjust:exact;-webkit-print-color-adjust:exact;}
           body{margin:0;padding:12px;background:#888;}
           .docx-wrapper{margin:0 auto 16px !important;box-shadow:0 2px 10px rgba(0,0,0,0.35);display:block !important;}
           .docx-wrapper:last-child{margin-bottom:0 !important;}
@@ -819,12 +819,9 @@ function PrintPreviewModal({
             .docx-wrapper{
               box-shadow:none;margin:0 !important;
               page-break-after:always;page-break-inside:avoid;
-              max-height:148mm;overflow:hidden;
             }
             .docx-wrapper:last-child{page-break-after:auto;}
-            .docx-wrapper section.docx{
-              max-height:148mm !important;overflow:hidden !important;
-            }
+            .docx-wrapper section.docx{page-break-inside:avoid !important;}
           }
         </style></head><body></body></html>`);
         iDoc.close();

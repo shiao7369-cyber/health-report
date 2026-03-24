@@ -21,7 +21,21 @@
       "Bash(cmd /c \"where git & where gh\")",
       "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"Get-Command git -ErrorAction SilentlyContinue | Select-Object Source; Get-Command gh -ErrorAction SilentlyContinue | Select-Object Source\")",
       "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"Get-Command vercel -ErrorAction SilentlyContinue | Select-Object Source\")",
-      "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"& ''C:\\\\Program Files\\\\Git\\\\mingw64\\\\bin\\\\git.exe'' config --global user.name; & ''C:\\\\Program Files\\\\Git\\\\mingw64\\\\bin\\\\git.exe'' config --global user.email\")"
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"& ''C:\\\\Program Files\\\\Git\\\\mingw64\\\\bin\\\\git.exe'' config --global user.name; & ''C:\\\\Program Files\\\\Git\\\\mingw64\\\\bin\\\\git.exe'' config --global user.email\")",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command 'Start-Process msiexec.exe -ArgumentList \"\"/i\"\", \"\"$env:TEMP\\\\gh-installer.msi\"\", \"\"/qn\"\", \"\"/norestart\"\" -Wait; Write-Host \"\"Done\"\"')",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command '& \"\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\"\" --version')",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command '& \"\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\"\" auth status')",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command 'echo \"\"https\"\" | & \"\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\"\" auth login --hostname github.com --web 2>&1')",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command 'Get-Content \"\"C:\\\\Users\\\\update\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-update-Desktop-health-report\\\\58c94e75-b8ec-4855-92a3-8a774a7b0bb1\\\\tasks\\\\b3d93qoog.output\"\"')",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command '$env:PATH = \"\"C:\\\\Program Files\\\\nodejs;\"\" + $env:PATH; npm install -g vercel 2>&1')",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command '$env:PATH = \"\"C:\\\\Program Files\\\\nodejs;\"\" + $env:PATH; vercel --version')",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command '$env:PATH = \"\"C:\\\\Program Files\\\\nodejs;\"\" + $env:PATH; & \"\"C:\\\\Program Files\\\\nodejs\\\\node_modules\\\\vercel\\\\dist\\\\index.js\"\" --version 2>&1; Get-Item \"\"C:\\\\Users\\\\update\\\\AppData\\\\Roaming\\\\npm\\\\vercel.cmd\"\" -ErrorAction SilentlyContinue | Select-Object FullName')",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command '$env:PATH = \"\"C:\\\\Users\\\\update\\\\AppData\\\\Roaming\\\\npm;C:\\\\Program Files\\\\nodejs;\"\" + $env:PATH; vercel --version')",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command '$env:PATH = \"\"C:\\\\Users\\\\update\\\\AppData\\\\Roaming\\\\npm;C:\\\\Program Files\\\\nodejs;\"\" + $env:PATH; Set-Location \"\"C:\\\\Users\\\\update\\\\Desktop\\\\health report\"\"; vercel login 2>&1')",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command 'Start-Sleep -Seconds 4; Get-Content \"\"C:\\\\Users\\\\update\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-update-Desktop-health-report\\\\58c94e75-b8ec-4855-92a3-8a774a7b0bb1\\\\tasks\\\\bv9bmrqvl.output\"\" -ErrorAction SilentlyContinue')",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command 'Get-Content \"\"C:\\\\Users\\\\update\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-update-Desktop-health-report\\\\58c94e75-b8ec-4855-92a3-8a774a7b0bb1\\\\tasks\\\\bv9bmrqvl.output\"\"')",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command '$env:PATH = \"\"C:\\\\Users\\\\update\\\\AppData\\\\Roaming\\\\npm;C:\\\\Program Files\\\\nodejs;\"\" + $env:PATH; Set-Location \"\"C:\\\\Users\\\\update\\\\Desktop\\\\health report\"\"; vercel --prod --yes 2>&1')",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command '$env:PATH = \"\"C:\\\\Users\\\\update\\\\AppData\\\\Roaming\\\\npm;C:\\\\Program Files\\\\nodejs;\"\" + $env:PATH; Set-Location \"\"C:\\\\Users\\\\update\\\\Desktop\\\\health report\"\"; vercel --prod --yes --name health-report 2>&1')"
     ]
   }
 }
