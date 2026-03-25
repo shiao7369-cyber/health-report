@@ -811,16 +811,27 @@ function PrintPreviewModal({
           @page{size:A5 landscape;margin:0;}
           *{box-sizing:border-box;}
           body{margin:0;padding:0;background:white;}
-          .docx-wrapper{display:block !important;}
-          .docx-wrapper section.docx{margin:0 auto !important;}
+          /* ── 全域：螢幕＋列印共用 ── */
+          .docx-wrapper{
+            width:210mm;height:148mm;
+            display:flex !important;
+            align-items:center;justify-content:center;
+            overflow:hidden;
+          }
+          .docx-wrapper section.docx{
+            margin:auto !important;
+            /* zoom 同時縮小排版尺寸 → 四邊留白約10mm，螢幕預覽與列印一致 */
+            zoom:0.90;
+          }
           /* 隱藏 Word 強制保留的尾端空段落，防止撐出第 2 頁 */
           .docx-wrapper section.docx > p:last-child{display:none !important;}
-          /* 螢幕預覽加視覺效果，不影響列印 */
+          /* ── 螢幕預覽視覺效果 ── */
           @media screen{
             body{padding:12px;background:#e8ecf0;}
-            .docx-wrapper{margin:0 auto 16px !important;box-shadow:0 2px 12px rgba(0,0,0,0.3);}
-            .docx-wrapper:last-child{margin-bottom:0 !important;}
+            .docx-wrapper{margin:0 auto 16px;box-shadow:0 2px 12px rgba(0,0,0,0.3);}
+            .docx-wrapper:last-child{margin-bottom:0;}
           }
+          /* ── 列印專用 ── */
           @media print{
             *{print-color-adjust:exact;-webkit-print-color-adjust:exact;
               box-shadow:none !important;}
@@ -828,17 +839,11 @@ function PrintPreviewModal({
             .docx-wrapper{
               background:white !important;
               margin:0 !important;padding:0 !important;
-              width:210mm !important;height:148mm !important;
-              display:flex !important;
-              align-items:center !important;
-              justify-content:center !important;
-              overflow:hidden !important;
               page-break-after:always;page-break-inside:avoid;
             }
             .docx-wrapper:last-child{page-break-after:auto;}
             .docx-wrapper section.docx{
               background:white !important;
-              margin:auto !important;
               padding:0 !important;
               box-shadow:none !important;
               border:none !important;
@@ -855,7 +860,7 @@ function PrintPreviewModal({
           body.appendChild(container);
           await renderAsync(arrayBuf, container, undefined, {
             inWrapper: true,
-            ignoreWidth: false,
+            ignoreWidth: true,
             ignoreHeight: true,
           });
         }
